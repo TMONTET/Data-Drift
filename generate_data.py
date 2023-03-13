@@ -55,6 +55,6 @@ class RandomDataGenerator:
             for n_categories in col_list:
                 df_ref, df_new = self.get_data(n_data, n_categories)
                 df_name = str(n_data) + "_data_&_" + str(n_categories) + "_cat"
-                dfs.append({'Stats': df_name, 'Data':(df_ref, df_new)})
+                dfs.append({'Stats': df_name, "Num_Cat": n_categories, "Num_Number": n_data,'Data':(df_ref, df_new)})
         
         return dfs
