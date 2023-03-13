@@ -49,4 +49,13 @@ class RandomDataGenerator:
         for i in range(col_start, range_col_max+1, 10):
             col_list.append(i)
         
-        return data_list, col_list
+        # Generate Data
+        dfs = []
+        for n_data in data_list:
+            for n_categories in col_list:
+                df_ref, df_new = self.get_data(n_data, n_categories)
+                df_name = str(n_data) + "_data_&_" + str(n_categories) + "_cat"
+                dfs.append({'Stats': df_name, 'Data':(df_ref, df_new)})
+        
+        
+        return dfs
