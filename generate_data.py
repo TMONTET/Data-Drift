@@ -1,6 +1,6 @@
 import math
-import pandas as pd
 import random
+import pandas as pd
 
 class RandomDataGenerator:
     # Génération de données aléatoires
@@ -56,6 +56,5 @@ class RandomDataGenerator:
                 df_ref, df_new = self.get_data(n_data, n_categories)
                 df_name = str(n_data) + "_data_&_" + str(n_categories) + "_cat"
                 dfs.append({'Stats': df_name, 'Data':(df_ref, df_new)})
-        
         
         return dfs
