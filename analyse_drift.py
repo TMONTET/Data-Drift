@@ -65,12 +65,12 @@ class AnalyseDrift:
         liste_1_a_100 = list(range(0, 999))
 
         # Créer une liste de toutes les combinaisons uniques de deux chiffres aléatoires
-        liste_combinaisons = [(a, b) for a in random.sample(liste_1_a_100, 100) for b in random.sample(liste_1_a_100, 100) if a != b]
+        list_combinations = [(a, b) for a in random.sample(liste_1_a_100, 100) for b in random.sample(liste_1_a_100, 100) if a != b]
         
         avg_js_cat = []
         avg_js_num = []
 
-        for batch in liste_combinaisons:
+        for batch in list_combinations:
             probs_cat       = self.detection.get_proba(list_cat_moy[batch[0]], list_cat_moy[batch[1]])
             probs_num       = self.detection.get_proba(list_num_moy[batch[0]], list_num_moy[batch[1]])
             drift_probs_cat = jensenshannon(probs_cat[0], probs_cat[1])
