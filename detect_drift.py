@@ -1,10 +1,10 @@
 from collections import Counter
+import time
 from scipy.spatial.distance import jensenshannon
 from scipy.stats import ks_2samp, wasserstein_distance, chi2_contingency
 from river import drift
 import numpy as np
 import pandas as pd
-import time
 
 
 class DetectDrift:
@@ -33,6 +33,9 @@ class DetectDrift:
         if self.test == "ks":
             ks_stat, p_value = ks_2samp(ref, new)
             return p_value
+        if self.test == "chi2":
+            chi2, p_value, dof, expected = chi2_contingency([ref,  new])
+            return p_value
 
     def method_drift(self, dfs):
         benchmark_prob_detail = []
@@ -52,6 +55,7 @@ class DetectDrift:
                     'js': jensenshannon(probabilites[0], probabilites[1]),
                     'wd': wasserstein_distance(probabilites[0], probabilites[1]),
                     'ks': self.switch_method(probabilites[0], probabilites[1]),
+                    'chi2': self.switch_method(probabilites[0], probabilites[1]),
                     'default': jensenshannon(probabilites[0], probabilites[1])
                 }
                 

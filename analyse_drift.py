@@ -43,7 +43,6 @@ class AnalyseDrift:
                     js_time_num.append(drift_probs)
                 else:
                     js_time_cat.append(drift_probs)
-                
 
         js_time_cat_df = pd.DataFrame(js_time_cat)
         js_time_num_df = pd.DataFrame(js_time_num)

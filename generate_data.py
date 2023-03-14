@@ -36,7 +36,7 @@ class RandomDataGenerator:
         return [df_ref, df_new]
 
     # Création de la liste des rangs de données et de colonnes
-    def number_data(self, data_range_min, data_range_max, range_col_min, range_col_max):
+    def number_data(self, data_range_min, data_range_max, range_cat_min, range_cat_max):
         data_list = []
         data      = data_range_min
         while data <= data_range_max:
@@ -44,9 +44,9 @@ class RandomDataGenerator:
             data *= 10
             
         col_list = []
-        col_list.append(range_col_min)
-        col_start = math.ceil((range_col_min+1)/10)*10
-        for i in range(col_start, range_col_max+1, 10):
+        col_list.append(range_cat_min)
+        col_start = math.ceil((range_cat_min+1)/10)*10
+        for i in range(col_start, range_cat_max+1, 10):
             col_list.append(i)
         
         # Generate Data
